@@ -25,4 +25,19 @@ class App < Sinatra::Base
     @sentence = "#{params[:word1]} " + "#{params[:word2]} " + "#{params[:word3]} " + "#{params[:word4]} " + "#{params[:word5]}"
     "#{@sentence}."
   end
+
+  get '/:operation/:number1/:number2' do 
+    case params[:operation]
+    when "add"
+      @result = params[:number1].to_i + params[:number2].to_i
+    when "subtract"
+      @result = params[:number1].to_i - params[:number2].to_i
+    when "multiply"
+      @result = params[:number1].to_i * params[:number2].to_i
+    when "divide"
+      @result = params[:number1].to_i / params[:number2].to_i
+    end 
+
+    "#{@result}"
+
 end
